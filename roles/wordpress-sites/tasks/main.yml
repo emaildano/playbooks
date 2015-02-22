@@ -1,0 +1,15 @@
+---
+-
+  include: nginx.yml
+-
+  include: directories.yml
+-
+  name: "Add WP user to www-data group"
+  user: "name=\"{{ item.user }}\" groups=www-data state=present append=yes"
+  with_items: wordpress_sites
+-
+  cron: "name=\"{{ item.site_name }} WordPress cron\" minute=\"*/15\" user=\"{{ item.user }}\" job=\"curl -s {{ item.env.wp_siteurl }}/wp-cron.php\" cron_file=\"wordpress-{{ item.site_name|replace('.', '_') }}\""
+  name: "Setup system cron"
+  notify: "reload nginx"
+  when: "item.system_cron | default(False) == True"
+  with_items: wordpress_sites

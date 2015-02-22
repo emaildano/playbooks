@@ -1,0 +1,39 @@
+---
+-
+  hosts: all
+  name: "Provision staging server"
+  roles:
+    -
+      role: common
+      tags:
+        - common
+    -
+      role: php
+      tags:
+        - php
+    -
+      role: nginx
+      tags:
+        - nginx
+    -
+      role: memcached
+      tags:
+        - memcached
+    -
+      role: composer
+      tags:
+        - composer
+    -
+      role: wp-cli
+      tags:
+        - wp-cli
+    -
+      role: capistrano-setup
+      tags:
+        - capistrano-setup
+    -
+      role: wordpress-sites
+      tags:
+        - wordpress-sites
+  sudo: true
+  user: ubuntu

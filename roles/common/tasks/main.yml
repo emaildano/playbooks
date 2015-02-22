@@ -1,0 +1,14 @@
+---
+-
+  apt: update_cache=yes
+  name: "Update Apt"
+-
+  apt: "name=\"{{ item }}\" state=present"
+  name: "Checking essentials"
+  with_items:
+    - python-software-properties
+    - python-pycurl
+    - build-essential
+    - python-mysqldb
+    - curl
+    - git-core

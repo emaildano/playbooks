@@ -1,0 +1,11 @@
+---
+-
+  hosts: all
+  name: "Secure Server's root user and create admin user"
+  remote_user: ubuntu
+  sudo: True
+  roles:
+    - sudoers
+    - sshd
+  vars_files:
+    - vars/sudoer_passwords.yml
