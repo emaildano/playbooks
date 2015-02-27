@@ -8,14 +8,14 @@
       ec2:
         assign_public_ip: true
         count_tag:
-          Name: Staging
+          Name: staging.dev
         exact_count: 1
         group: "All Traffic"
         image: ami-9a562df2
         instance_tags:
-          Name: staging
+          Name: staging.dev
         instance_type: t2.micro
-        key_name: j2
+        key_name: j2-staging
         region: us-east-1
         vpc_subnet_id: subnet-5138dd08
         wait: true
