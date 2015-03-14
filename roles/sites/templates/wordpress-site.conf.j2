@@ -6,15 +6,10 @@ server {
   access_log   {{ www_root }}/{{ item.site_name }}/logs/{{ item.site_name }}.access.log;
   error_log    {{ www_root }}/{{ item.site_name }}/logs/{{ item.site_name }}.error.log;
 
-  root  {{ www_root }}/{{ item.site_name }}/web;
+  root  {{ www_root }}/{{ item.site_name }}/web/web;
   index index.php;
 
   charset utf-8;
-
-  {% if item.env.wp_env == 'development' -%}
-    # See Virtualbox section at http://wiki.nginx.org/Pitfalls
-    sendfile off;
-  {%- endif %}
 
   {% if item.multisite.enabled | default(false) -%}
     include wordpress_multisite_subdirectories.conf;
