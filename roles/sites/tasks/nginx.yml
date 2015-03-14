@@ -2,11 +2,11 @@
 -
   name: "Create WordPress configuration for Nginx"
   template: "src=\"wordpress-site.conf.j2\" dest=\"/etc/nginx/sites-available/{{ item.site_name }}.conf\""
-  with_items: wordpress_sites
+  with_items: sites
 -
   file: "src=\"/etc/nginx/sites-available/{{ item.site_name }}.conf\" dest=\"/etc/nginx/sites-enabled/{{ item.site_name }}.conf\" owner=root group=root state=link"
   name: "Enable WordPress site"
-  with_items: wordpress_sites
+  with_items: sites
 -
   command: "cp /tmp/server-configs-nginx/sites-available/no-default /etc/nginx/sites-enabled/no-default.conf\n"
   name: "Enable better default site to drop unknown requests"
@@ -14,4 +14,4 @@
   name: "Copy php-fpm configuration"
   notify: "restart php-fpm"
   template: "src=\"php-fpm.conf.j2\" dest=\"/etc/php5/fpm/pool.d/{{ item.site_name }}.conf\""
-  with_items: wordpress_sites
+  with_items: sites

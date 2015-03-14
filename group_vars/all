@@ -4,8 +4,8 @@ www_root: /srv/www
 sudoers:
   - user: "admin"
     groups: ["sudo"]
-    
-wordpress_sites:
+
+sites:
   - site_name: dev.j2made.com
     site_hosts:
       - dev.j2made.com
@@ -17,8 +17,6 @@ wordpress_sites:
     admin_password: admin
     admin_email: admin@dev.j2made.com
     system_cron: true
-    multisite:
-      enabled: false
     env:
       wp_home: http://dev.j2made.com
       wp_siteurl: http://dev.j2made.com/wp

@@ -28,12 +28,8 @@
       tags:
         - wp-cli
     -
-      role: capistrano-setup
+      role: sites
       tags:
-        - capistrano-setup
-    -
-      role: wordpress-sites
-      tags:
-        - wordpress-sites
+        - sites
   sudo: true
   user: ubuntu
