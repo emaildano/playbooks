@@ -1,5 +1,7 @@
 ---
 -
+  include: cleanup.yml
+-
   include: nginx.yml
 -
   include: directories.yml

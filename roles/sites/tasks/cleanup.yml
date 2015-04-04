@@ -1,0 +1,7 @@
+---
+-
+  name: Cleanup repos
+  command: "rm -rf /tmp/sites"
+-
+  name: Cleanup sites
+  command: "rm -rf {{ www_root }}"

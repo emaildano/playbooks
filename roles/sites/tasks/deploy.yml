@@ -4,6 +4,7 @@
   template: src=env.j2
             dest={{ www_root }}/{{ item.site_name }}/web/.env
   with_items: sites
+  when: item.create_env | default(False) == True
 -
   name: Clone repo
   git: repo={{ item.repo.url }}
