@@ -4,12 +4,18 @@
 -
   include: directories.yml
 -
-  name: "Add WP user to www-data group"
+  include: deploy.yml
+-
+  name: "Add user to www-data group"
   user: "name=\"{{ item.user }}\" groups=www-data state=present append=yes"
+  with_items: sites
+-
+  file: "path=\"{{ www_root }}/{{ item.site_name }}\" owner=\"{{ item.user | default(user) }}\" group=www-data state=directory recurse=yes"
+  name: "Change site owner to user"
   with_items: sites
 -
   cron: "name=\"{{ item.site_name }} WordPress cron\" minute=\"*/15\" user=\"{{ item.user }}\" job=\"curl -s {{ item.env.wp_siteurl }}/wp-cron.php\" cron_file=\"wordpress-{{ item.site_name|replace('.', '_') }}\""
   name: "Setup system cron"
   notify: "reload nginx"
-  when: "item.system_cron | default(False) == True"
+  when: "item.system_cron | default(True) == False"
   with_items: sites

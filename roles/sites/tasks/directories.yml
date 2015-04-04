@@ -7,7 +7,3 @@
   file: "path=\"{{ www_root }}/{{ item.site_name }}/logs\" owner=\"{{ item.user | default(user) }}\" group=www-data mode=0755 state=directory"
   name: "Create logs folder of sites"
   with_items: sites
--
-  file: "path=\"{{ www_root }}/{{ item.site_name }}\" owner=\"{{ item.user | default(user) }}\" group=www-data state=directory recurse=yes"
-  name: "Change site owner to user"
-  with_items: sites

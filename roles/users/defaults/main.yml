@@ -1,0 +1,6 @@
+---
+deploy_group: deploy
+deploy_groups: www-data
+deploy_user: deploy
+deploy_keys:
+  - ~/.ssh/id_rsa.pub

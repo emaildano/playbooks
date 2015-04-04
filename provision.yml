@@ -3,33 +3,13 @@
   hosts: all
   name: "Provision staging server"
   roles:
-    -
-      role: common
-      tags:
-        - common
-    -
-      role: php
-      tags:
-        - php
-    -
-      role: nginx
-      tags:
-        - nginx
-    -
-      role: memcached
-      tags:
-        - memcached
-    -
-      role: composer
-      tags:
-        - composer
-    -
-      role: wp-cli
-      tags:
-        - wp-cli
-    -
-      role: sites
-      tags:
-        - sites
+    - common
+    - php
+    - nginx
+    - memcached
+    - composer
+    - wp-cli
+    - users
+    - sites
   sudo: true
   user: ubuntu

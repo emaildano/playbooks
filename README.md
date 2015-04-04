@@ -21,3 +21,7 @@ ansible-playbook -l tag_Name_staging_dev -i /etc/ansible/hosts provision.yml
 ```
 ansible-playbook -l tag_Name_staging_dev -i /etc/ansible/hosts secure-root.yml
 ```
+
+```
+ansible-playbook -l tag_Name_staging_dev -i /etc/ansible/hosts provision.yml --start-at="Create web root of sites"
+```
